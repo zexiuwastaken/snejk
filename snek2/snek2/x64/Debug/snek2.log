@@ -1,0 +1,6 @@
+﻿  Logika.cpp
+  main.cpp
+D:\Programy\VisualStudio\Projects\snek2\snek2\main.cpp(9,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Plansza.cpp
+  Generating Code...
+  snek2.vcxproj -> D:\Programy\VisualStudio\Projects\snek2\x64\Debug\snek2.exe
