@@ -8,7 +8,7 @@
 void Logika::Odswiezanie()
 {
     Plansza::ZaladujPlansze();
-    while(!game_over)
+    do
     {
         system("cls");
         Owoce();
@@ -17,7 +17,7 @@ void Logika::Odswiezanie()
         Plansza::Rysowanie_planszy();
         GameOver();
         Sleep(200);
-    }
+    } while (!game_over);
     system("cls");
     Plansza::cleanup();
     std::cout << "Dzieki elo" << std::endl;
@@ -95,26 +95,38 @@ void Logika::Sterowanie()
     
     if (!(charKierunek == 'w' || charKierunek == 'a' || charKierunek == 's' || charKierunek == 'd')) {
         charKierunek = tempKierunek;
-        Plansza::msg = "w";
+        Plansza::msg = "abc";
     }
-    else Plansza::msg = "chodzi";
+    else Plansza::msg = "sda";
     
     switch (charKierunek){ 
     case 'w':
-        tempKierunek = charKierunek;
-        Plansza::glowaY--;
+        if (tempKierunek == 's') { charKierunek = 's'; Plansza::glowaY++; }
+        else {
+            tempKierunek = charKierunek;
+            Plansza::glowaY--;
+        }
         break;
     case 'a':
-        tempKierunek = charKierunek;
-        Plansza::glowaX--;
+        if (tempKierunek == 'd') { charKierunek = 'd'; Plansza::glowaX++; }
+        else {
+            tempKierunek = charKierunek;
+            Plansza::glowaX--;
+        }
         break;
     case 's':
-        tempKierunek = charKierunek;
-        Plansza::glowaY++;
+        if (tempKierunek == 'w') { charKierunek = 'w'; Plansza::glowaY--; }
+        else {
+            tempKierunek = charKierunek;
+            Plansza::glowaY++;
+        }
         break;
     case 'd':
-        tempKierunek = charKierunek;
-        Plansza::glowaX++;
+        if (tempKierunek == 'a') { charKierunek = 'a'; Plansza::glowaX--; }
+        else {
+            tempKierunek = charKierunek;
+            Plansza::glowaX++;
+        }
         break;
     default:
         break;
@@ -123,7 +135,7 @@ void Logika::Sterowanie()
 
 void Logika::GameOver() {
 
-    if (glowaX == -1 || glowaX == WymiaryX[wybor] + 1 || glowaY == -1 || glowaY == WymiaryY[wybor] + 1) {
+    if (glowaX == -1 || glowaX == WymiaryX[wybor] || glowaY == -1 || glowaY == WymiaryY[wybor]) {
         game_over = true;
     }
     for (int i = 0; i < Plansza::cialoX.size(); i++)
